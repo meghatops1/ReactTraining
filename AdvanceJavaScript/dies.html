@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            margin-top: 200px;
+            margin-left: 500px;
+            width: 200px;
+            height: 200px;
+            background-color: black;
+        }
+        .main{
+            height: 120px;
+            width: 120px;
+        }
+        h1{
+            text-align: center;
+            font-size: 88px;
+            transform: scale(1);
+            animation: game 2s ease-in-out 0.5s 3 alternate-reverse ;
+          
+        }
+
+        @keyframes game{
+            from{
+
+            }
+            to{
+                transform: scale(1.5);
+            }
+        }
+    </style>
+    <script>
+        function myFunction(){
+            const first=[
+            {"animation-name" : "game"},
+            {"animation-timing-function": "ease-in-out"},
+            {"animation-delay": "0.5s"},
+            {"animation-direction": "alternate-reverse"}
+            ]
+            const sec={
+                duration: 1000,
+                iterations: 5,
+            }
+            
+            let x = Math.floor((Math.random() * 6) + 1);
+            let imgname= `${x}.jpg`;
+            if(x==6){
+                const myTimeout = setTimeout(headPrint, 500);
+                
+
+            }
+            document.getElementById('img').src=imgname;
+            
+        }
+        function headPrint(){
+            document.body.style.backgroundColor = "black";
+                document.getElementById("main").innerHTML="<h1 id='head'>You won </h1>";
+                let hed = document.getElementById('head');
+                hed.style.color="white";
+                hed.animate(first,sec);
+        }
+    </script>
+</head>
+<body>
+    <div class="main" id="main">
+        <img src="1.jpg" alt="" width="200px" style="" onclick="myFunction()" id="img">
+    </div>
+    
+</body>
+</html>

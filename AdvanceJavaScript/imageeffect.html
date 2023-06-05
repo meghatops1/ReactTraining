@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFunction(id){
+            let img = document.getElementById('img');
+            if(id=="blur"){
+                img.style= ` -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+                filter: blur(5px);`;
+            }
+            else if(id=="gray"){
+                img.style= `-webkit-filter: grayscale(100%); 
+                filter: grayscale(100%);`;
+            }
+            else if(id=="real"){
+                img.style= `-webkit-filter: none; 
+                filter: none;`;
+            }
+            else if(id=="shadow"){
+                img.style=` -webkit-filter:drop-shadow();
+                filter:drop-shadow();`;
+            }
+           
+        }
+    </script>
+    <style>
+        img{
+            -webkit-filter:drop-shadow();
+            filter:drop-shadow();
+        }
+    </style>
+</head>
+<body>
+    <img src="pineapple.jpg" alt="" width="200px" id="img">
+    <br>
+    <button onclick="myFunction(this.id)" id="gray">Gray</button>
+    <button onclick="myFunction(this.id)" id="blur">Blur</button>
+    <button onclick="myFunction(this.id)" id="real">original</button>
+</body>
+</html>

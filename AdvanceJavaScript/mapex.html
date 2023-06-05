@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+            window.count=0;
+            let   i = 0;
+            let taskList = new Map();
+            
+        function createTaskList(){
+            str="";
+            console.log(taskList);
+            taskList.forEach( (value, key, map) => {
+                str+=`<tr>
+                    <td id="${key}">${value}</td>
+                    <td><button class="" onclick="removeTask(this.id)" id="${key}"><i class="fa fa-trash-o"></i></button></td>
+                    <tr>`;
+            });
+            console.log(str);
+            document.getElementById('rowdata').innerHTML=str;
+        }
+        function removeTask(taskid){
+            alert(taskid);
+            taskList.delete(taskid);
+            createTaskList();
+        }
+        function addTask(){
+           let task= document.getElementById('task').value;
+           //alert(task);
+           let key = `task${++window.count}`;
+            taskList.set(key,task);
+            createTaskList();
+            document.getElementById('task').value=" ";
+        }
+    </script>
+    <style>
+        .centerclass{
+            width: 60%;
+            margin-left: 10%;
+            margin-top: 100px;
+            background-color: gray;
+            border:2px solid black;
+            padding: 30px;
+        }
+        .custom {
+            margin-left: 5%;
+            width: 60%;
+        }
+        .inner{
+            margin-left: 30% ;
+        }
+        input:text{
+            border-radius: 30px;
+        }
+        .task{
+            width:200px;
+            height:30px;
+            overflow: hidden;
+            border-radius:0.5em;
+        }
+        
+    
+        
+    </style>
+</head>
+<body>
+    <div class="container centerclass" >
+        <div class="inner">
+            <input type="text" value="" id="task" class="task">
+        <button onclick="addTask()" class="btn btn-default">Add</button>
+        </div>
+        
+            <h1 >Task List</h1>
+            <div class="table-bordered custom">          
+            <table class="table custom">
+              <thead>
+                <tr>
+                  <th>Task</th>
+                  <th>action</th>
+                </tr>
+              </thead>
+              <tbody id="rowdata">
+                <tr >
+                  
+              </tbody>
+            </table>
+            </div>
+          </div>
+    
+</body>
+</html>
